@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="lobby">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>Lobby.gg • News Feed</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    
+    <link rel="stylesheet" href="assets/front/css/front.css">
+    
+  </head>
+
+  <body class="lobby-body" data-page="blog">
+    
+    <canvas id="lobby-particles" aria-hidden="true"></canvas>
+    <div class="lobby-parallax-layer" aria-hidden="true">
+      <div class="float-obj obj-planet"></div>
+      <div class="float-obj obj-cube"></div>
+      <div class="float-obj obj-spark"></div>
+      <div class="float-obj obj-ring"></div>
+      <div class="float-obj obj-joystick"></div>
+      <div class="float-obj obj-vr"></div>
+      <div class="float-obj obj-headset"></div>
+    </div>
+
+    
+    <div id="lobby-cursor" aria-hidden="true"></div>
+    <div id="lobby-cursor-dot" aria-hidden="true"></div>
+
+    <div class="lobby-shell lobby-shell--topnav">
+      <div class="lobby-main lobby-main--full">
+        
+<header class="lobby-header">
+  <div class="header-left">
+    <a class="lobby-logo" href="blog.html" aria-label="Lobby.gg home">
+      <img
+        class="logo-img"
+        src="assets/images/lobby-logo-white.png"
+        alt="Lobby.gg logo"
+      /> 
+      <span class="logo-glow" aria-hidden="true"></span>
+    </a>
+
+    <div class="lobby-search" data-search>
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input
+        type="search"
+        placeholder="Search users, tournaments, marketplace…"
+        aria-label="Search"
+        autocomplete="off"
+      />
+      <div class="search-hint" aria-hidden="true">/ to focus</div>
+      <div class="search-results" data-search-results aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <button class="header-icon" type="button" data-notif-trigger aria-label="Notifications">
+      <i class="fa-solid fa-bell"></i>
+      <span class="pill pill-accent" data-notif-count>7</span>
+      <span class="micro-explosion" aria-hidden="true"></span>
+    </button>
+
+    <button class="header-icon" type="button" aria-label="Quick Messages">
+      <i class="fa-solid fa-comment-dots"></i>
+      <span class="pill">2</span>
+    </button>
+
+    <div class="header-user" data-user-menu>
+      <div class="user-avatar" aria-hidden="true">
+        <span>GG</span>
+      </div>
+      <div class="user-meta">
+        <div class="user-name">Guest Gamer</div>
+        <div class="user-tag">@lobby_guest</div>
+      </div>
+      <button class="chev" type="button" aria-label="Open user menu">
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="user-dropdown" data-user-dropdown aria-hidden="true">
+  <a class="dd-item" href="users.html"><i class="fa-solid fa-user-astronaut"></i> Profile</a>
+  <a class="dd-item" href="marketplace.html"><i class="fa-solid fa-bag-shopping"></i> Saved items</a>
+  <a class="dd-item" href="tournaments.html"><i class="fa-solid fa-trophy"></i> My tournaments</a>
+  <div class="dd-sep"></div>
+  <button class="dd-item" type="button"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+</div>
+
+
+
+
+        <main class="lobby-content">
+          <section class="page-head">
+    <div>
+      <h1 class="page-title">News Feed</h1>
+      <p class="page-sub">A dynamic timeline of gamer posts, patch notes, tournament highlights and drops.</p>
+    </div>
+    <div class="page-actions">
+      <button class="btn btn-primary" type="button"><i class="fa-solid fa-pen-nib"></i> Create Post</button>
+      <button class="btn btn-ghost" type="button"><i class="fa-solid fa-hashtag"></i> Topics</button>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="col span-8">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title"><i class="fa-solid fa-rss"></i> Timeline</h2>
+        </div>
+
+        
+        <article class="card post-card" data-tilt>
+          <div class="post-top">
+            <div class="avatar avatar-grad">GG</div>
+            <div class="post-meta">
+              <div class="post-user">Guest Gamer <span class="muted">@lobby_guest</span></div>
+              <div class="post-time">Share an update • patch note • tournament highlight</div>
+            </div>
+            <button class="icon-btn" type="button" aria-label="Composer options"><i class="fa-solid fa-sliders"></i></button>
+          </div>
+          <div class="post-body">
+            <div class="lobby-search" style="max-width:none">
+              <i class="fa-regular fa-pen-to-square" aria-hidden="true"></i>
+              <input type="text" placeholder="Write something that helps your squad level up…" aria-label="Create post">
+              <div class="search-hint" aria-hidden="true">Enter</div>
+            </div>
+          </div>
+          <div class="post-actions">
+            <button class="chip" type="button"><i class="fa-solid fa-image"></i> Media</button>
+            <button class="chip" type="button"><i class="fa-solid fa-trophy"></i> Tournoi</button>
+            <button class="chip" type="button"><i class="fa-solid fa-tag"></i> Drop</button>
+            <button class="chip chip-like" type="button" data-reaction><i class="fa-solid fa-bolt"></i> Post</button>
+          </div>
+        </article>
+
+        <div class="feed" style="margin-top:12px" data-feed>
+                      <article class="card post-card" data-tilt>
+              <div class="post-top">
+                <div class="avatar avatar-grad">LO</div>
+                <div class="post-meta">
+                  <div class="post-user">LobbyOps <span class="muted">@lobbyops</span></div>
+                  <div class="post-time">12m ?? <span class="pill pill-accent" style="position:static;height:auto;min-width:auto;padding:2px 10px">Update</span></div>
+                </div>
+                <button class="icon-btn" type="button" aria-label="Post menu"><i class="fa-solid fa-ellipsis"></i></button>
+              </div>
+              <div class="post-body">Patch 2.6 is live: faster matchmaking, new violet UI theme, and better anti-smurf signals.</div>
+              <div class="post-actions">
+                <button class="chip chip-like" type="button" data-reaction><i class="fa-solid fa-fire"></i> Like</button>
+                <button class="chip" type="button"><i class="fa-regular fa-comment-dots"></i> Comment</button>
+                <button class="chip" type="button"><i class="fa-solid fa-share-nodes"></i> Share</button>
+                <div class="post-stats">
+                  <span><i class="fa-solid fa-heart"></i> 2481</span>
+                  <span><i class="fa-solid fa-comment"></i> 219</span>
+                </div>
+              </div>
+            </article>
+            <article class="card post-card" data-tilt>
+              <div class="post-top">
+                <div class="avatar avatar-grad">AR</div>
+                <div class="post-meta">
+                  <div class="post-user">ArcadeNova <span class="muted">@arcadenova</span></div>
+                  <div class="post-time">1h ?? <span class="pill pill-accent" style="position:static;height:auto;min-width:auto;padding:2px 10px">Tournament</span></div>
+                </div>
+                <button class="icon-btn" type="button" aria-label="Post menu"><i class="fa-solid fa-ellipsis"></i></button>
+              </div>
+              <div class="post-body">Violet Rift Cup brackets are out. If you???re looking for a duo, DM me ??? ranked 1.9K ELO.</div>
+              <div class="post-actions">
+                <button class="chip chip-like" type="button" data-reaction><i class="fa-solid fa-fire"></i> Like</button>
+                <button class="chip" type="button"><i class="fa-regular fa-comment-dots"></i> Comment</button>
+                <button class="chip" type="button"><i class="fa-solid fa-share-nodes"></i> Share</button>
+                <div class="post-stats">
+                  <span><i class="fa-solid fa-heart"></i> 1402</span>
+                  <span><i class="fa-solid fa-comment"></i> 188</span>
+                </div>
+              </div>
+            </article>
+            <article class="card post-card" data-tilt>
+              <div class="post-top">
+                <div class="avatar avatar-grad">NV</div>
+                <div class="post-meta">
+                  <div class="post-user">NeonViper <span class="muted">@neonviper</span></div>
+                  <div class="post-time">3h ?? <span class="pill pill-accent" style="position:static;height:auto;min-width:auto;padding:2px 10px">Marketplace</span></div>
+                </div>
+                <button class="icon-btn" type="button" aria-label="Post menu"><i class="fa-solid fa-ellipsis"></i></button>
+              </div>
+              <div class="post-body">Marketplace drop: minimal RGB essentials that don???t scream ???gamer???. Clean. Vibrant. Controlled.</div>
+              <div class="post-actions">
+                <button class="chip chip-like" type="button" data-reaction><i class="fa-solid fa-fire"></i> Like</button>
+                <button class="chip" type="button"><i class="fa-regular fa-comment-dots"></i> Comment</button>
+                <button class="chip" type="button"><i class="fa-solid fa-share-nodes"></i> Share</button>
+                <div class="post-stats">
+                  <span><i class="fa-solid fa-heart"></i> 912</span>
+                  <span><i class="fa-solid fa-comment"></i> 76</span>
+                </div>
+              </div>
+            </article>
+
+        </div>
+
+        <div class="feed-loading" data-feed-loader aria-hidden="true">
+          <div class="loader-orb"></div>
+          <div class="muted">Loading more…</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col span-4">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title"><i class="fa-solid fa-people-group"></i> People to follow</h2>
+        </div>
+        <div class="stack">
+                      <div class="card user-card2" data-tilt style="padding:14px">
+              <div class="u-top">
+                <div class="avatar avatar-grad">PU</div>
+                <div class="u-meta">
+                  <div class="u-name">PulseKira</div>
+                  <div class="u-sub">@pulsekira ?? Strategy & reviews</div>
+                </div>
+                <button class="btn btn-mini btn-primary" type="button">Follow</button>
+              </div>
+            </div>
+            <div class="card user-card2" data-tilt style="padding:14px">
+              <div class="u-top">
+                <div class="avatar avatar-grad">RI</div>
+                <div class="u-meta">
+                  <div class="u-name">RiftRunner</div>
+                  <div class="u-sub">@riftrunner ?? Tournament grinder</div>
+                </div>
+                <button class="btn btn-mini btn-primary" type="button">Follow</button>
+              </div>
+            </div>
+            <div class="card user-card2" data-tilt style="padding:14px">
+              <div class="u-top">
+                <div class="avatar avatar-grad">ME</div>
+                <div class="u-meta">
+                  <div class="u-name">MetaSniper</div>
+                  <div class="u-sub">@metasniper ?? Loadouts & aim</div>
+                </div>
+                <button class="btn btn-mini btn-primary" type="button">Follow</button>
+              </div>
+            </div>
+
+
+          <div class="panel" style="padding:14px">
+            <div class="panel-head" style="margin-bottom:10px">
+              <h2 class="panel-title"><i class="fa-solid fa-trophy"></i> Tournaments</h2>
+              <a class="panel-link" href="tournaments.html">View</a>
+            </div>
+            <div class="stack">
+              <div class="card tour-card" data-tilt data-countdown data-end="1710005400">
+                <div class="tour-top">
+                  <div class="tour-name">Violet Rift Cup</div>
+                  <div class="pill pill-live"><span class="dot-live"></span> LIVE</div>
+                </div>
+                <div class="tour-count">
+                  <div class="count-label">Ends in</div>
+                  <div class="count-value" data-countdown-value>--:--:--</div>
+                </div>
+              </div>
+              <div class="card market-item" data-tilt>
+                <div class="market-badge">Drop</div>
+                <div class="market-name">ARGB Keycaps</div>
+                <div class="market-price"><span class="accent">39.00</span> <span class="muted">DT</span></div>
+                <div class="row-actions">
+                  <a class="btn btn-mini btn-ghost" href="marketplace.html"><i class="fa-solid fa-cart-shopping"></i> Marketplace</a>
+                </div>
+              </div>
+              <div class="card market-item" data-tilt>
+                <div class="market-badge">Partner</div>
+                <div class="market-name">HyperNova Sponsoring</div>
+                <div class="market-price"><span class="accent">Boost</span> <span class="muted">your team</span></div>
+                <div class="row-actions">
+                  <a class="btn btn-mini btn-ghost" href="sponsoring.html"><i class="fa-solid fa-handshake-angle"></i> Sponsoring</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+        </main>
+
+        
+<footer class="lobby-footer" aria-label="Live stats"> 
+  <div class="footer-stats">
+    <div class="stat" data-stat>
+      <div class="stat-icon">
+        <i class="fa-solid fa-signal"></i>
+      </div>
+      <div class="stat-meta">
+        <div class="stat-value" data-countup data-to="18234">0</div>
+        <div class="stat-label">Players online</div>
+      </div>
+    </div>
+
+    <div class="stat" data-stat>
+      <div class="stat-icon">
+        <i class="fa-solid fa-trophy"></i>
+      </div>
+      <div class="stat-meta">
+        <div class="stat-value" data-countup data-to="128">0</div>
+        <div class="stat-label">Active tournaments</div>
+      </div>
+    </div>
+
+    <div class="stat" data-stat>
+      <div class="stat-icon">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+      </div>
+      <div class="stat-meta">
+        <div class="stat-value" data-countup data-to="540912">0</div>
+        <div class="stat-label">Posts today</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+      </div>
+    </div>
+
+    
+<nav class="lobby-bottom-bar" aria-label="Quick navigation">
+  <div class="bottom-bar-inner"> 
+    <a href="tournaments.html" class="bottom-btn" data-bottom-nav>
+      <i class="fa-solid fa-trophy"></i>
+      <span>Tournois</span>
+      <span class="bottom-btn-glow" aria-hidden="true"></span>
+    </a>
+    <a href="marketplace.html" class="bottom-btn" data-bottom-nav>
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Marketplace</span>
+      <span class="bottom-btn-glow" aria-hidden="true"></span>
+    </a>
+    <a href="sponsoring.html" class="bottom-btn" data-bottom-nav>
+      <i class="fa-solid fa-handshake-angle"></i>
+      <span>Sponsoring</span>
+      <span class="bottom-btn-glow" aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+    
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="assets/front/js/front.js"></script>
+    
+  </body>
+</html>
+
+
